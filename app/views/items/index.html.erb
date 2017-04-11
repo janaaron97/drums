@@ -1,0 +1,10 @@
+<h1>Hi!</h1>
+
+<%= link_to "Upload", new_item_path %>
+
+<% @items.each do |item| %>
+	<%= item.text %><br>
+	<%= image_tag(item.image, width: '200px') %><br>
+	<%= link_to "Delete Post", item_path(item), method: :delete, class: "button" %>
+
+<% end %>

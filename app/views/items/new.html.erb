@@ -1,0 +1,35 @@
+<h1>Index#new</h1>
+<p>Find me in app/views/index/new.html.erb</p>
+
+
+<input type="file" onchange="previewFile()"><br>
+<img src="" height="200" alt="Image preview...">
+
+
+<%= form_for :item, url: items_path(@item) do |s| %>
+	<%= s.hidden_field :image, val: 'hi' %>
+	<%= s.submit %>
+<% end %>
+
+
+<script>
+
+function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+
+  reader.addEventListener("load", function () {
+    preview.src = reader.result;
+    console.log(reader.result);
+    document.getElementById('item_image').value = reader.result;
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+
+
+</script>
